@@ -2,26 +2,21 @@ import axios from "axios";
 
 // const mbid = "5b11f4ce-a62d-471e-81fc-a69a8278c7da";
 
-// first fetch from Musicbrainz
-export const musicBrainFetch = async (id) => {
+export const musicBrainzFetch = async (id) => {
   const response = await axios.get(`http://musicbrainz.org/ws/2/artist/${id}?&fmt=json&inc=url-rels+release-groups`)
 
   // extract artist name
   const artistName = response.data.name;
-   console.log('name is = ', artistName);
 
   // extract MBID
   const mbid = id;
 
-  // extract wikidta identifier
+  // extract the wikidata identifier
   const wikidata = response.data.relations.filter(element => element.type === "wikidata")
   const wikidataLink = wikidata[0].url.resource;
   const wikidataIdentifier = wikidataLink.split('/').pop();
 
-  // console.log(wikidataLink);
-  // console.log(wikidataIdentifier);
-
-  // extract album names
+  // extract the album names
   const albums = response.data['release-groups']
     .filter(element => element['primary-type'] === "Album")
     .map(album => {
@@ -30,20 +25,7 @@ export const musicBrainFetch = async (id) => {
         id: album.id
       }
     })
-  // console.log(albums);
 
-  // extract album title
-  //   const albumTitle = albums.map(album => {
-  //     return {
-  //       id: album.id,
-  //       title: album.title
-  //     }
-  //   });
-
-  // console.log(albumTitle)
-
-
-  // create output object
   const musicBrainOutput = {
     mbid: mbid,
     name: artistName,
@@ -51,7 +33,6 @@ export const musicBrainFetch = async (id) => {
     albums: albums,
 
   }
-  console.log(musicBrainOutput);
   return musicBrainOutput;
 }
 
@@ -71,7 +52,7 @@ export const coverArtFetch = async (artistObject) => {
       console.log(error.message);
       const errorAlbum = {
         ...album,
-        image: undefined
+        image: 'undefined'
       }
       return errorAlbum;
     }
@@ -80,7 +61,6 @@ export const coverArtFetch = async (artistObject) => {
   const updatedAlbums = await Promise.all(updatedAlbumsInfo);
 
   // Ersätt tidigare 'albums'-array med updatedAlbums i artistObject, och returnera object
-
   const coverArtOutput = {
     ...artistObject,
     albums: updatedAlbums
@@ -97,7 +77,5 @@ return encodeURIComponent(title)
 export const wikipediaFetch = async (title) => {
     const response = await axios.get(`https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=true&redirects=true&titles=${title}`);
     const description = Object.values(response.data.query.pages)[0].extract;
-    // console.log(description)
     return description;
-
 }
