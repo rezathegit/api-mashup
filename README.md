@@ -70,7 +70,7 @@ In case of you want to fetch more info from existing API:s and wish to add up mo
 In case you want to use another external API and wish to combine the outcome with the current output data, I suggest to create new file in /externalApi/exampleApi.js and also a new controller file under /controllers/example.js and start writing the fetch function there.
 
 ## Extras
-Some MDID from random artist which you can use for the fetch request: 
+Some MBID from random artist which you can use for the fetch request: 
 Depeche Mode: 8538e728-ca0b-4321-b7e5-cff6565dd4c0
 ABBA: d87e52c5-bb8d-4da8-b941-9f4928627dc8
 George Michael: ccb8f30e-4d71-40c4-8b1d-846dafe73e2c
