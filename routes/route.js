@@ -1,5 +1,5 @@
 import  express  from "express";
-import { getArtistInfo } from '../controllers/artists.js'
+import { getArtistInfo } from '../controllers/artists.js';
 
 const routes = express.Router();
 

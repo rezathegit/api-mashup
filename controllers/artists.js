@@ -1,4 +1,4 @@
-import { musicBrainzFetch, coverArtFetch, wikidataFetch, wikipediaFetch } from "../externalApi/api.js";
+import { musicBrainzFetch, coverArtFetch, wikidataFetch, wikipediaFetch } from "../externalApi/index.js";
 
 export const getArtistInfo = async (req, res) => {
     

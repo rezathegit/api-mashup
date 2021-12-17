@@ -23,18 +23,22 @@ The API-mashup receives a ** MBID ** (MusicBrainz Identifier) ​​and returns 
 
 
 ## Folder structure and files 
+
 .
 ├── README.md                   # File you are reading now which consists of description and instruction.
 ├── controllers                 # Folder for controllers files which includes functions. 
-│   └── artists.js              # File includes the several fetches functions 
-├── externalApi                 # Folder includes the files for external API:s
-│   └── api.js                  # file include external API:s links and fetch functions.
-├── package-lock.json           # File to keep track of the exact version of every package that is installed. 
+│   └── artists.js              # File includes the several fetches functions.
+├── externalApi                 # Folder includes the files for fetches from external API:s.
+│   ├── coverArtFetch.js        # file include fetch function from Cover Art Archive API.
+│   ├── index.js                # file include import and export of all fetches.
+│   ├── musicBrainzFetch.js     # file include fetch function from Musicbrainz API.
+│   ├── wikidataFetch.js        # file include fetch function from Wikidata API.
+│   └── wikipediaFetch.js       # file include fetch function from Wikipedia API.
+├── package-lock.json           # File to keep track of the exact version of every package that is installed.           
 ├── package.json                # File for installed packages, modules and dependencies.
 ├── routes                      # Folder for routing files.
-│   └── route.js                # File for creating the different routes.        
+│   └── route.js                # File include the routing for the GET request.   
 └── server.js                   # File for creationg the Express server.
-
 
 ## Technology 
 Node, Express, Axios, REST API
@@ -58,11 +62,18 @@ API: https://en.wikipedia.org/w/api.php
 Documentation: https://wiki.musicbrainz.org/Cover_Art_Archive/API
 API: http://coverartarchive.org/
 
-
-
-## Limitations
-If there is no cover image for the requested album, the result would be "unkown" for the image field.
+## Limitations and Error handling
+If there is no cover image for the requested album from the API (Cover Art Archive), the value for the image field would be "undefined".
 
 ## Development
 In case of you want to fetch more info from existing API:s and wish to add up more info to the output you can continue on /externalApi/api.js file.
 In case you want to use another external API and wish to combine the outcome with the current output data, I suggest to create new file in /externalApi/exampleApi.js and also a new controller file under /controllers/example.js and start writing the fetch function there.
+
+## Extras
+Some MDID from random artist which you can use for the fetch request: 
+Depeche Mode: 8538e728-ca0b-4321-b7e5-cff6565dd4c0
+ABBA: d87e52c5-bb8d-4da8-b941-9f4928627dc8
+George Michael: ccb8f30e-4d71-40c4-8b1d-846dafe73e2c
+Queen: 0383dadf-2a4e-4d10-a46a-e9e041da8eb3
+Michael Jackson: f27ec8db-af05-4f36-916e-3d57f91ecf5e
+Madonna: 79239441-bfd5-4981-a70c-55c3f15c1287
