@@ -63,10 +63,10 @@ Documentation: https://wiki.musicbrainz.org/Cover_Art_Archive/API
 API: http://coverartarchive.org/
 
 ## Limitations and Error handling
-If there is no cover image for the requested album from the API (Cover Art Archive), the value for the image field would be "undefined".
+If there is no cover image for the requested album from the API (Cover Art Archive), you would receive an error message in the image field saying 'Image from Cover Art Archive API is not available'.
 
 ## Development
-In case of you want to fetch more info from existing API:s and wish to add up more info to the output you can continue on /externalApi/api.js file.
+In case of you want to fetch more info from existing API:s and wish to add up more info to the output you can continue on /externalApi folder.
 In case you want to use another external API and wish to combine the outcome with the current output data, I suggest to create new file in /externalApi/exampleApi.js and also a new controller file under /controllers/example.js and start writing the fetch function there.
 
 ## Extras

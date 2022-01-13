@@ -1,22 +1,32 @@
 import { musicBrainzFetch, coverArtFetch, wikidataFetch, wikipediaFetch } from "../externalApi/index.js";
 
 export const getArtistInfo = async (req, res) => {
-    
-    const musicBrainData = await musicBrainzFetch(req.params.id);
 
-    const coverArtAndMusicBrainData = await coverArtFetch(musicBrainData);
+    try {
 
-    const bandName = await wikidataFetch(musicBrainData.wikidataIdentifier);
-    
-    const bandDescription = await wikipediaFetch(bandName);
+        const musicBrainData = await musicBrainzFetch(req.params.id);
 
-    const finalOutput = {
-        ...coverArtAndMusicBrainData,
-        description: bandDescription,
-    };
+        const coverArtAndMusicBrainData = await coverArtFetch(musicBrainData);
 
-    delete finalOutput.wikidataIdentifier;
+        const bandName = await wikidataFetch(musicBrainData.wikidataIdentifier);
 
-    res.json(finalOutput);
+        const bandDescription = await wikipediaFetch(bandName);
+
+        const finalOutput = {
+            ...coverArtAndMusicBrainData,
+            description: bandDescription,
+        };
+
+        delete finalOutput.wikidataIdentifier;
+
+        res
+            .status(200)
+            .json(finalOutput);
+
+    } catch (error) {
+        res
+            .status(404)
+            .json({ message: error.message })
+    }
 }
 
