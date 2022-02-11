@@ -28,21 +28,7 @@ The API-mashup receives a ** MBID ** (MusicBrainz Identifier) ​​and returns 
 ![image](https://user-images.githubusercontent.com/57294217/153571267-74abf429-cf03-47f1-ac89-2ce294a4cebe.png)
 
 
-.
-├── README.md                   # File you are reading now which consists of description and instruction.
-├── controllers                 # Folder for controllers files which includes functions. 
-│   └── artists.js              # File includes the several fetches functions.
-├── externalApi                 # Folder includes the files for fetches from external API:s.
-│   ├── coverArtFetch.js        # file include fetch function from Cover Art Archive API.
-│   ├── index.js                # file include import and export of all fetches.
-│   ├── musicBrainzFetch.js     # file include fetch function from Musicbrainz API.
-│   ├── wikidataFetch.js        # file include fetch function from Wikidata API.
-│   └── wikipediaFetch.js       # file include fetch function from Wikipedia API.
-├── package-lock.json           # File to keep track of the exact version of every package that is installed.           
-├── package.json                # File for installed packages, modules and dependencies.
-├── routes                      # Folder for routing files.
-│   └── route.js                # File include the routing for the GET request.   
-└── server.js                   # File for creationg the Express server.
+
 
 ## Technology 
 Node, Express, Axios, REST API
