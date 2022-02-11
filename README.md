@@ -24,6 +24,10 @@ The API-mashup receives a ** MBID ** (MusicBrainz Identifier) ​​and returns 
 
 ## Folder structure and files 
 
+
+![image](https://user-images.githubusercontent.com/57294217/153571267-74abf429-cf03-47f1-ac89-2ce294a4cebe.png)
+
+
 .
 ├── README.md                   # File you are reading now which consists of description and instruction.
 ├── controllers                 # Folder for controllers files which includes functions. 
