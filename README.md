@@ -21,6 +21,13 @@ The API-mashup receives a ** MBID ** (MusicBrainz Identifier) ​​and returns 
 6. For example if you are looking for `Nirvana` band you should have something like this : http://localhost:5000/api/artists/5b11f4ce-a62d-471e-81fc-a69a8278c7da
 7. you can use the link both in the browser and Postman to get the result data back. The returend data would be in a JSON format.
 
+## Folder structure and files 
+
+````
+. ├── README.md # File you are reading now which consists of description and instruction. ├── controllers # Folder for controllers files which includes functions. │ └── artists.js # File includes the several fetches functions. ├── externalApi # Folder includes the files for fetches from external API:s. │ ├── coverArtFetch.js # file include fetch function from Cover Art Archive API. │ ├── index.js # file include import and export of all fetches. │ ├── musicBrainzFetch.js # file include fetch function from Musicbrainz API. │ ├── wikidataFetch.js # file include fetch function from Wikidata API. │ └── wikipediaFetch.js # file include fetch function from Wikipedia API. ├── package-lock.json # File to keep track of the exact version of every package that is installed.
+├── package.json # File for installed packages, modules and dependencies. ├── routes # Folder for routing files. │ └── route.js # File include the routing for the GET request.
+└── server.js # File for creationg the Express server.
+````
 
 ## Folder structure and files 
 
